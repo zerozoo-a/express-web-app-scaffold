@@ -6,8 +6,7 @@ import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import nunjucks from "nunjucks";
 import { Error2 } from "../lib/classes/ErrorHandler";
-
-import { indexRouter } from "./router";
+import { homeController } from "./home/home.controller";
 
 dotenv.config();
 export const app = express();
@@ -45,10 +44,13 @@ app.set("view engine", "html");
 nunjucks.configure("views", { express: app, watch: true, autoescape: true });
 
 // routes
-app.use("/", indexRouter);
+app.use("/", homeController);
 
 app.get("/about", (req, res) => {
-  res.send("ABOUT");
+  res.render("about", {
+    title: "ABOUT",
+    data: "aaaaaaaaaaaaaaa",
+  });
 });
 
 app.get("/logout", (req, res) => {
