@@ -1,0 +1,10 @@
+{% extends './layout/layout.html' %}
+?????
+{% block content%}
+<head>
+<h1>Oops..!</h1>
+<h2>{{message}}</h1>
+<h3>{{error.status}}</h2>
+</head>
+<pre>{{error.stack}}</pre>
+{% endblock%}
