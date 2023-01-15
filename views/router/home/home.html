@@ -1,4 +1,11 @@
 {% extends '../../layout/layout.html' %}
     {% block content%}
-        hello
+        <h1>
+        {{title}}
+        </h1>
+        <ul>
+            {% for a in range %}
+                <li>{{a}}</li>
+            {% endfor %}
+        </ul>
     {% endblock%}

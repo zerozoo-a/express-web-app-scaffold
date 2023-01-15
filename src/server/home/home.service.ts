@@ -13,13 +13,9 @@ export const homeService: RequestHandler = (req, res) => {
       if (err) throw err;
     });
   });
-  console.log(`pwd`, process.env.PWD);
 
   res.render(`${process.env.PWD}/views/router/home/home`, {
     title: "hi!!!!",
     range: [1, 2, 3],
   });
-
-  // res.render(, {
-  // });
 };
