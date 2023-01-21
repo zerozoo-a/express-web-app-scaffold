@@ -3,9 +3,20 @@
         <h1>
         {{title}}
         </h1>
+        <div id="timer">
+            date: 
+        </div>
         <ul>
             {% for a in range %}
                 <li>{{a}}</li>
             {% endfor %}
         </ul>
+        <script>
+            const now = new Date();
+            setInterval(()=>{
+                const time = document.querySelector("#timer");
+                time.innerHTML =now 
+                now.setSeconds(now.getSeconds() + 1);
+            },1000)
+        </script>
     {% endblock%}
