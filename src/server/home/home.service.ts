@@ -17,7 +17,7 @@ export const homeService: RequestHandler = (req, res) => {
 
   res.render(`${process.env.PWD}${process.env.ROUTER}${DOMAIN}`, {
     title: "HOME TITLE",
-    range: [1, 2, 3],
+    date: new Date(),
   });
 };
 

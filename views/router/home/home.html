@@ -4,18 +4,15 @@
         {{title}}
         </h1>
         <div id="timer">
-            date: 
+            date: <b id="time">{{date}}</b>
         </div>
         <ul>
-            {% for a in range %}
-                <li>{{a}}</li>
-            {% endfor %}
         </ul>
         <script>
-            const now = new Date();
+            const now = new Date()
             setInterval(()=>{
-                const time = document.querySelector("#timer");
-                time.innerHTML =now 
+                const time = document.querySelector("#time");
+                time.innerHTML = now 
                 now.setSeconds(now.getSeconds() + 1);
             },1000)
         </script>
