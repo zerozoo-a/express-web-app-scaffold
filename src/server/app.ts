@@ -9,6 +9,7 @@ import { Error2 } from "../lib/classes/ErrorHandler";
 import expressLoader from "./loaders/express";
 
 import { homeController } from "./home/home.controller";
+import { aboutController } from "./about/about.controller";
 
 dotenv.config();
 
@@ -42,6 +43,7 @@ export const app = express();
 
 // routes
 app.use("/", homeController);
+app.use("/about", aboutController);
 
 // app.get("/about", (req, res) => {
 //   res.render("about", {
