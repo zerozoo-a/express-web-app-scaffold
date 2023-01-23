@@ -13,5 +13,5 @@ export default async () => {
 
   const conn_1 = await pool.getConnection();
   const conn_2 = await pool.getConnection();
-  return [conn_1, conn_2];
+  return { pool, conns: [conn_1, conn_2] };
 };

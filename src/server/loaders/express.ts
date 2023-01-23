@@ -12,12 +12,12 @@ import type { IRouterMatcher } from "express";
 
 export default async function expressLoader({
   app,
-  pools,
+  db,
 }: {
   app: express.Application;
-  pools?: mysql.PoolConnection[];
+  db: { pool: mysql.Pool; conns: mysql.PoolConnection[] };
 }) {
-  if (!pools) {
+  if (!db) {
     throw new Error("DB ERROR OCCURRED");
   }
 
@@ -44,11 +44,12 @@ export default async function expressLoader({
   app.set("view engine", "html");
   nunjucks.configure("views", { express: app, watch: true, autoescape: true });
 
-  app.set(`pools`, pools);
+  app.set(`db`, db);
 
   return app as App;
 }
 
 export interface App extends express.Application {
-  get: ((name: "pools") => mysql.PoolConnection[]) & IRouterMatcher<this>;
+  get: ((name: "db") => { pool: mysql.Pool; conns: mysql.PoolConnection[] }) &
+    IRouterMatcher<this>;
 }
