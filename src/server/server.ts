@@ -1,14 +1,14 @@
 import { app } from "./app";
 import expressLoader from "./loaders/express";
-import dbLoader from "./loaders/db";
+import poolLoader from "./loaders/db";
 
 const PORT = process.env.PORT || 3000;
 
 async function bootServer() {
-  const db = await dbLoader();
-  await expressLoader({ app, db });
+  const pools = await poolLoader();
+  const loadedApp = await expressLoader({ app, pools });
 
-  app.listen(PORT, () => {
+  loadedApp.listen(PORT, () => {
     console.log(`LISTEN ON http://localhost:${PORT}/`);
   });
 }

@@ -10,10 +10,13 @@ import expressLoader from "./loaders/express";
 
 import { homeController } from "./home/home.controller";
 import { aboutController } from "./about/about.controller";
+import { boardController } from "./board/board.controller";
 
 dotenv.config();
 
-export const app = express();
+import type { App } from "./loaders/express";
+
+export const app: App = express();
 
 // validate
 
@@ -44,6 +47,10 @@ export const app = express();
 // routes
 app.use("/", homeController);
 app.use("/about", aboutController);
+app.use("/board", boardController);
+console.log("run 1");
+console.log("run 1");
+console.log("run 1");
 
 // app.get("/about", (req, res) => {
 //   res.render("about", {

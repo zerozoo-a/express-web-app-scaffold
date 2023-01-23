@@ -1,5 +1,4 @@
 import express from "express";
-import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import path from "path";
@@ -7,9 +6,21 @@ import session from "express-session";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import nunjucks from "nunjucks";
-import { Pool } from "mysql2";
 
-export default async ({ app, db }: { app: express.Application; db?: Pool }) => {
+import type mysql from "mysql2/promise";
+import type { IRouterMatcher } from "express";
+
+export default async function expressLoader({
+  app,
+  pools,
+}: {
+  app: express.Application;
+  pools?: mysql.PoolConnection[];
+}) {
+  if (!pools) {
+    throw new Error("DB ERROR OCCURRED");
+  }
+
   dotenv.config();
   app.use((req, res, next) => {
     if (!process.env.COOKIE_SECRET) throw new Error("TEST ERROR");
@@ -32,7 +43,12 @@ export default async ({ app, db }: { app: express.Application; db?: Pool }) => {
   );
   app.set("view engine", "html");
   nunjucks.configure("views", { express: app, watch: true, autoescape: true });
-  app.set("db", db);
 
-  return app;
-};
+  app.set(`pools`, pools);
+
+  return app as App;
+}
+
+export interface App extends express.Application {
+  get: ((name: "pools") => mysql.PoolConnection[]) & IRouterMatcher<this>;
+}

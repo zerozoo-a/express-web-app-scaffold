@@ -10,10 +10,15 @@
         </ul>
         <script>
             const now = new Date()
-            setInterval(()=>{
+            const timer = setInterval(()=>{
                 const time = document.querySelector("#time");
-                time.innerHTML = now 
+                time.innerHTML = now.toLocaleTimeString() 
                 now.setSeconds(now.getSeconds() + 1);
             },1000)
+
+            // clear
+            window.onunload = () => {
+                clearInterval(timer)
+            }
         </script>
     {% endblock%}
