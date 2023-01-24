@@ -1,6 +1,8 @@
 import { Router } from "express";
-import { aboutService } from "./about.service";
+import { AboutService } from "./about.service";
+
+export const aboutService = new AboutService({ DOMAIN: `/about/about` });
 
 export const aboutController = Router();
 
-aboutController.get("", aboutService);
+aboutController.get("", aboutService.render);

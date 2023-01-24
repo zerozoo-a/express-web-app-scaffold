@@ -1,6 +1,8 @@
 import { Router } from "express";
-import { homeService } from "./home.service";
+import { HomeService } from "./home.service";
+
+export const homeService = new HomeService({ DOMAIN: `/home/home` });
 
 export const homeController = Router();
 
-homeController.get("", homeService);
+homeController.get("", homeService.render);

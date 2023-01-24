@@ -1,30 +1,15 @@
-import type { App } from "../loaders/express.loader";
+import { Service } from "../../lib/classes/Service";
+
 import type { RequestHandler } from "express";
 
-export const homeService: RequestHandler = (req, res) => {
-  const DOMAIN = `/home/home` as const;
-  const app = req.app as App;
-  app.get("pools");
-  // const conn = req.app.get("db") as Pool;
-  // let result;
+export class HomeService extends Service {
+  constructor({ DOMAIN }: { DOMAIN: string }) {
+    super({ DOMAIN });
+  }
 
-  // conn.getConnection((err, conn) => {
-  //   if (err) throw err;
-  //   const SelectAllFrom = `SELECT * FROM departments`;
-
-  //   conn.query(SelectAllFrom, (err, res) => {
-  //     if (err) throw err;
-  //     result = res;
-  //   });
-  // });
-
-  res.render(`${process.env.PWD}${process.env.ROUTER}${DOMAIN}`, {
-    title: "HOME TITLE",
-    date: new Date().toLocaleTimeString(),
-  });
-};
-
-/**
- * db를 promise 세팅으로 돌리기
- * app.get('db')에 타입이 따라오게 하기
- */
+  render: RequestHandler = (req, res) => {
+    res.render(this.path, {
+      title: "Home TITLE",
+    });
+  };
+}

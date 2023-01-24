@@ -8,6 +8,8 @@ export class SignupService extends Service {
   }
 
   render: RequestHandler = (req, res) => {
-    res.render(this.path);
+    res.render(this.path, {
+      title: "SIGNUP TITLE",
+    });
   };
 }

@@ -11,18 +11,15 @@ export class UserService extends Service {
   }
 
   render: RequestHandler = async (req, res) => {
-    res.render(this.path);
+    res.render(this.path, {
+      title: "USER TITLE",
+    });
   };
 
   getOne: RequestHandler = async (req, res) => {
     const r = await this.repo
       .getRepository(User)
       .find({ relations: { profile: true } });
-
-    console.log(
-      "🚀 ~ file: user.service.ts:15 ~ UserService ~ getOne:RequestHandler= ~ r",
-      r
-    );
 
     res.send("sorry");
   };
