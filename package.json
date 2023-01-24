@@ -8,7 +8,10 @@
     "copy-files": "cp -r src/public/ dist/public/ && cp -r src/views/ dist/views/"
   },
   "dependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "bcrypt": "^5.1.0",
     "chokidar": "^3.5.3",
+    "class-validator": "^0.14.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
