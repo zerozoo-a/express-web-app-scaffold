@@ -10,7 +10,7 @@ import { AppDataSource } from "../../db/data-source";
 
 import type mysql from "mysql2/promise";
 import type { IRouterMatcher } from "express";
-import { DataSource } from "typeorm";
+import type { DataSource } from "typeorm";
 
 export default async function expressLoader({
   app,
@@ -43,6 +43,8 @@ export default async function expressLoader({
       name: "session-cookie",
     })
   );
+  app.use("/assets", express.static(path.join(__dirname, "../public")));
+
   app.set("view engine", "html");
   nunjucks.configure("views", { express: app, watch: true, autoescape: true });
 

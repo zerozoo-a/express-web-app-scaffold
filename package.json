@@ -6,7 +6,7 @@
     "dev": "nodemon --exec ts-node ./src/server/server.ts",
     "build": "tsc && npm run copy-files",
     "copy-files": "cp -r ./views/ dist/views/",
-    "start":"node ./dist/server/server.js"
+    "start": "node ./dist/server/server.js"
   },
   "dependencies": {
     "@types/bcrypt": "^5.0.0",
@@ -22,6 +22,7 @@
     "mysql2": "^2.3.3",
     "nunjucks": "^3.2.3",
     "reflect-metadata": "^0.1.13",
+    "sass": "^1.57.1",
     "typeorm": "^0.3.11"
   },
   "devDependencies": {
