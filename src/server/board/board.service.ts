@@ -2,9 +2,9 @@ import { Service } from "../../lib/classes/Service";
 
 import type { Request, Response } from "express";
 
-export class BoardService extends Service<any> {
-  constructor({ DOMAIN, repo }: { DOMAIN: string; repo: any }) {
-    super({ DOMAIN, repo });
+export class BoardService extends Service {
+  constructor({ DOMAIN }: { DOMAIN: string }) {
+    super({ DOMAIN });
   }
 
   render = async (req: Request, res: Response) => {

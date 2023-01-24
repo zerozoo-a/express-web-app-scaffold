@@ -1,6 +1,6 @@
 import type { RequestHandler } from "express";
 import Pool from "mysql2/typings/mysql/lib/Pool";
-import type { App } from "../loaders/express";
+import type { App } from "../loaders/express.loader";
 
 export const aboutService: RequestHandler = async (req, res) => {
   const DOMAIN = `/about/about`;

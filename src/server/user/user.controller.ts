@@ -4,5 +4,8 @@ import { UserService } from "./user.service";
 
 const userService = new UserService({
   DOMAIN: `/user/user`,
-  repo: new User(),
 });
+
+export const userController = Router();
+
+userController.get("", userService.render);

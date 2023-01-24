@@ -1,4 +1,4 @@
-import type { App } from "../loaders/express";
+import type { App } from "../loaders/express.loader";
 import type { RequestHandler } from "express";
 
 export const homeService: RequestHandler = (req, res) => {

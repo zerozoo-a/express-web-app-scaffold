@@ -1,9 +1,9 @@
 import "reflect-metadata";
 import { app } from "./app";
-import expressLoader from "./loaders/express";
-import poolLoader from "./loaders/db";
-import { routeLoader } from "./loaders/route";
-import ormLoader from "../server/loaders/orm";
+import expressLoader from "./loaders/express.loader";
+import poolLoader from "./loaders/db.loader";
+import { routeLoader } from "./loaders/route.loader";
+import ormLoader from "./loaders/orm.loader";
 
 const PORT = process.env.PORT || 3000;
 
