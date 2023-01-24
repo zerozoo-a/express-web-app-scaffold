@@ -6,15 +6,17 @@ import session from "express-session";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import nunjucks from "nunjucks";
+import { AppDataSource } from "../../db/data-source";
 
 import type mysql from "mysql2/promise";
 import type { IRouterMatcher } from "express";
+import { DataSource } from "typeorm";
 
 export default async function expressLoader({
   app,
   db,
 }: {
-  app: express.Application;
+  app: App;
   db: { pool: mysql.Pool; conns: mysql.PoolConnection[] };
 }) {
   if (!db) {
@@ -44,12 +46,15 @@ export default async function expressLoader({
   app.set("view engine", "html");
   nunjucks.configure("views", { express: app, watch: true, autoescape: true });
 
-  app.set(`db`, db);
+  app.set<DB>(`db`, db);
+  app.set<DataSource>(`orm`, AppDataSource);
+  const m = app.get<DataSource>("orm");
 
   return app as App;
 }
 
+export type DB = { pool: mysql.Pool; conns: mysql.PoolConnection[] };
 export interface App extends express.Application {
-  get: ((name: "db") => { pool: mysql.Pool; conns: mysql.PoolConnection[] }) &
-    IRouterMatcher<this>;
+  set<T = any>(setting: string, val: T): this;
+  get: (<T = any>(name: string) => T) & IRouterMatcher<this>;
 }

@@ -14,3 +14,4 @@ exports.conn = mysql2_1.default.createPool({
     connectionLimit: 10,
     queueLimit: 0,
 });
+//# sourceMappingURL=connection.js.map

@@ -27,3 +27,4 @@ exports.default = () => __awaiter(void 0, void 0, void 0, function* () {
     const conn_2 = yield pool.getConnection();
     return { pool, conns: [conn_1, conn_2] };
 });
+//# sourceMappingURL=db.js.map

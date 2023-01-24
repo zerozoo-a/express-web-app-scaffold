@@ -17,10 +17,12 @@ const app_1 = require("./app");
 const express_1 = __importDefault(require("./loaders/express"));
 const db_1 = __importDefault(require("./loaders/db"));
 const route_1 = require("./loaders/route");
+const orm_1 = __importDefault(require("../server/loaders/orm"));
 const PORT = process.env.PORT || 3000;
 function bootServer() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            yield (0, orm_1.default)();
             const db = yield (0, db_1.default)();
             yield (0, express_1.default)({ app: app_1.app, db });
             yield (0, route_1.routeLoader)({ app: app_1.app });
@@ -34,3 +36,4 @@ function bootServer() {
     });
 }
 bootServer();
+//# sourceMappingURL=server.js.map

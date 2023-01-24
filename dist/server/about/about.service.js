@@ -21,3 +21,4 @@ const aboutService = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     });
 });
 exports.aboutService = aboutService;
+//# sourceMappingURL=about.service.js.map

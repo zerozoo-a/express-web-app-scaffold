@@ -5,3 +5,4 @@ const express_1 = require("express");
 const about_service_1 = require("./about.service");
 exports.aboutController = (0, express_1.Router)();
 exports.aboutController.get("", about_service_1.aboutService);
+//# sourceMappingURL=about.controller.js.map

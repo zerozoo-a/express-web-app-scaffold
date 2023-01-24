@@ -1,27 +1,17 @@
-import type { RequestHandler } from "express";
-import type Pool from "mysql2/typings/mysql/lib/Pool";
+import { app } from "../../server/app";
+import { AppDataSource } from "db/data-source";
+import type { App } from "../../server/loaders/express";
+import { DataSource } from "typeorm";
 
-// type Ta = (req: number, res: string) => any;
-// interface IService {
-//   gogo1: (req:number,res:number)=>number;
+export class Service {
+  readonly DOMAIN: string;
+  readonly path: string;
+  readonly app: App;
+  repo: DataSource = AppDataSource;
 
-//   render:() => any
-// }
-
-// class Service implements  {
-//   #DOMAIN: string = "";
-//   #conn: Pool;
-//   #handler: RequestHandler;
-//   //   handler: RequestHandler;
-
-//   constructor(DOMAIN: string) {
-//     this.#DOMAIN = DOMAIN;
-//   }
-
-//   ren
-// }
-
-// const Service: RequestHandler = (req, res) => {};
-
-{
+  constructor({ DOMAIN }: { DOMAIN: string }) {
+    this.DOMAIN = DOMAIN;
+    this.path = `${process.env.PWD}${process.env.ROUTER}${this.DOMAIN}`;
+    this.app = app;
+  }
 }

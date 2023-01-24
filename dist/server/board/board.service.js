@@ -9,19 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BoardService = exports.Service = void 0;
-class Service {
-    constructor({ DOMAIN, app }) {
-        this.DOMAIN = DOMAIN;
-        this.path = `${process.env.PWD}${process.env.ROUTER}${this.DOMAIN}`;
-        this.app = app;
-    }
-}
-exports.Service = Service;
-class BoardService extends Service {
+exports.BoardService = void 0;
+const Service_1 = require("@/lib/classes/Service");
+class BoardService extends Service_1.Service {
     constructor({ DOMAIN, app }) {
         super({ DOMAIN, app });
-        this.render = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
+        this.render = (req, res) => __awaiter(this, void 0, void 0, function* () {
             const con1 = this.app.get("db").conns[0];
             const [departments, metaData] = yield con1.query("SELECT * FROM departments");
             return res.render(this.path, {
@@ -32,10 +25,7 @@ class BoardService extends Service {
                 },
             });
         });
-        this.secret = (req, res, next) => {
-            console.log("req", req.query);
-            res.send("hi");
-        };
     }
 }
 exports.BoardService = BoardService;
+//# sourceMappingURL=board.service.js.map

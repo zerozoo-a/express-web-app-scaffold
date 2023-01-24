@@ -21,3 +21,4 @@ function routeLoader({ app }) {
     });
 }
 exports.routeLoader = routeLoader;
+//# sourceMappingURL=route.js.map

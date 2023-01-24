@@ -51,3 +51,4 @@ function expressLoader({ app, db, }) {
     });
 }
 exports.default = expressLoader;
+//# sourceMappingURL=express.js.map

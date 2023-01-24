@@ -1,0 +1,1 @@
+{"version":3,"file":"board.controller.js","sourceRoot":"","sources":["../../../src/server/board/board.controller.ts"],"names":[],"mappings":";;;AAAA,gCAA6B;AAC7B,qCAAiC;AACjC,mDAA+C;AAE/C,MAAM,YAAY,GAAG,IAAI,4BAAY,CAAC,EAAE,MAAM,EAAE,cAAc,EAAE,GAAG,EAAH,SAAG,EAAE,CAAC,CAAC;AAE1D,QAAA,eAAe,GAAG,IAAA,gBAAM,GAAE,CAAC;AAExC,uBAAe,CAAC,GAAG,CAAC,EAAE,EAAE,YAAY,CAAC,MAAM,CAAC,CAAC"}

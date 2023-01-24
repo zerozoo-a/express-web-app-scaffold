@@ -1,20 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-// type Ta = (req: number, res: string) => any;
-// interface IService {
-//   gogo1: (req:number,res:number)=>number;
-//   render:() => any
-// }
-// class Service implements  {
-//   #DOMAIN: string = "";
-//   #conn: Pool;
-//   #handler: RequestHandler;
-//   //   handler: RequestHandler;
-//   constructor(DOMAIN: string) {
-//     this.#DOMAIN = DOMAIN;
-//   }
-//   ren
-// }
-// const Service: RequestHandler = (req, res) => {};
-{
+exports.Service = void 0;
+class Service {
+    constructor({ DOMAIN, app }) {
+        this.DOMAIN = DOMAIN;
+        this.path = `${process.env.PWD}${process.env.ROUTER}${this.DOMAIN}`;
+        this.app = app;
+    }
 }
+exports.Service = Service;
+//# sourceMappingURL=Service.js.map

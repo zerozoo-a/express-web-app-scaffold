@@ -8,3 +8,4 @@ const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 exports.app = (0, express_1.default)();
+//# sourceMappingURL=app.js.map
