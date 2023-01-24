@@ -1,11 +1,44 @@
 {% extends '../../layout/layout.html' %}
     {% block content%}
+    <style>
+    table,td {
+        border: 1px solid #333;
+    }
+
+    thead,tfoot {
+        background-color: #333;
+        color: #fff;
+    }
+    </style>
+    
         <h1>
         {{title}}
         </h1>
         <div>
             이 페이지는 board 페이지입니다.
-
             만나서 반갑습니다.
         </div>
+        <section>
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">
+                            DEPARTMENTS
+                        </th> 
+                    </tr>
+                </thead>
+                <tbody>
+                {% for department in data.departments %}
+                <tr>
+                   <td>
+                    {{department.dept_no}}
+                   </td>
+                   <td>
+                    {{department.dept_name}}
+                   </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </section>
     {% endblock%}

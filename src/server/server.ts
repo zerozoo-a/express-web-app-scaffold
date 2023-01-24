@@ -1,14 +1,23 @@
+import "reflect-metadata";
 import { app } from "./app";
 import expressLoader from "./loaders/express";
 import poolLoader from "./loaders/db";
+import { routeLoader } from "./loaders/route";
+import ormLoader from "../server/loaders/orm";
 
 const PORT = process.env.PORT || 3000;
 
 async function bootServer() {
-  const db = await poolLoader();
-  const loadedApp = await expressLoader({ app, db });
+  try {
+    await ormLoader();
+    const db = await poolLoader();
+    await expressLoader({ app, db });
+    await routeLoader({ app });
+  } catch (err) {
+    console.error("DB CONNECTION ERROR", err);
+  }
 
-  loadedApp.listen(PORT, () => {
+  app.listen(PORT, () => {
     console.log(`LISTEN ON http://localhost:${PORT}/`);
   });
 }
