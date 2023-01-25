@@ -10,19 +10,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BoardService = void 0;
-const Service_1 = require("@/lib/classes/Service");
+const Service_1 = require("../../lib/classes/Service");
 class BoardService extends Service_1.Service {
-    constructor({ DOMAIN, app }) {
-        super({ DOMAIN, app });
+    constructor({ DOMAIN }) {
+        super({ DOMAIN });
         this.render = (req, res) => __awaiter(this, void 0, void 0, function* () {
             const con1 = this.app.get("db").conns[0];
-            const [departments, metaData] = yield con1.query("SELECT * FROM departments");
             return res.render(this.path, {
                 title: "BOARD TITLE",
                 date: new Date().toLocaleTimeString(),
-                data: {
-                    departments,
-                },
+                data: {},
             });
         });
     }

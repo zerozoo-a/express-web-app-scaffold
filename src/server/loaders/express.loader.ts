@@ -43,7 +43,7 @@ export default async function expressLoader({
       name: "session-cookie",
     })
   );
-  app.use("/assets", express.static(path.join(__dirname, "../public")));
+  app.use(express.static(path.join(__dirname, "../../../public")));
 
   app.set("view engine", "html");
   nunjucks.configure("views", { express: app, watch: true, autoescape: true });

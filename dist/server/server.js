@@ -14,18 +14,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 require("reflect-metadata");
 const app_1 = require("./app");
-const express_1 = __importDefault(require("./loaders/express"));
-const db_1 = __importDefault(require("./loaders/db"));
-const route_1 = require("./loaders/route");
-const orm_1 = __importDefault(require("../server/loaders/orm"));
+const express_loader_1 = __importDefault(require("./loaders/express.loader"));
+const db_loader_1 = __importDefault(require("./loaders/db.loader"));
+const route_loader_1 = require("./loaders/route.loader");
+const orm_loader_1 = __importDefault(require("./loaders/orm.loader"));
 const PORT = process.env.PORT || 3000;
 function bootServer() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            yield (0, orm_1.default)();
-            const db = yield (0, db_1.default)();
-            yield (0, express_1.default)({ app: app_1.app, db });
-            yield (0, route_1.routeLoader)({ app: app_1.app });
+            yield (0, orm_loader_1.default)();
+            const db = yield (0, db_loader_1.default)();
+            yield (0, express_loader_1.default)({ app: app_1.app, db });
+            yield (0, route_loader_1.routeLoader)({ app: app_1.app });
         }
         catch (err) {
             console.error("DB CONNECTION ERROR", err);

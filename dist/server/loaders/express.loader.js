@@ -20,6 +20,7 @@ const express_session_1 = __importDefault(require("express-session"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const morgan_1 = __importDefault(require("morgan"));
 const nunjucks_1 = __importDefault(require("nunjucks"));
+const data_source_1 = require("../../db/data-source");
 function expressLoader({ app, db, }) {
     return __awaiter(this, void 0, void 0, function* () {
         if (!db) {
@@ -44,11 +45,14 @@ function expressLoader({ app, db, }) {
             cookie: { httpOnly: true, secure: false },
             name: "session-cookie",
         }));
+        app.use("/assets", express_1.default.static(path_1.default.join(__dirname, "../public")));
         app.set("view engine", "html");
         nunjucks_1.default.configure("views", { express: app, watch: true, autoescape: true });
         app.set(`db`, db);
+        app.set(`orm`, data_source_1.AppDataSource);
+        const m = app.get("orm");
         return app;
     });
 }
 exports.default = expressLoader;
-//# sourceMappingURL=express.js.map
+//# sourceMappingURL=express.loader.js.map

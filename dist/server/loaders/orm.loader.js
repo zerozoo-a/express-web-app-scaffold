@@ -8,23 +8,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const promise_1 = __importDefault(require("mysql2/promise"));
-exports.default = () => __awaiter(void 0, void 0, void 0, function* () {
-    const pool = promise_1.default.createPool({
-        host: "localhost",
-        user: "root",
-        database: process.env.DB_TABLE,
-        password: process.env.DB_SECRET,
-        waitForConnections: true,
-        connectionLimit: 2,
-        queueLimit: 0,
+const data_source_1 = require("../../db/data-source");
+function ormLoader() {
+    return __awaiter(this, void 0, void 0, function* () {
+        data_source_1.AppDataSource.initialize()
+            .then(() => {
+            console.log("Data Source has been initialized!");
+        })
+            .catch((err) => {
+            console.error("Error during Data Source initialization:", err);
+        });
     });
-    const conn_1 = yield pool.getConnection();
-    const conn_2 = yield pool.getConnection();
-    return { pool, conns: [conn_1, conn_2] };
-});
-//# sourceMappingURL=db.js.map
+}
+exports.default = ormLoader;
+//# sourceMappingURL=orm.loader.js.map

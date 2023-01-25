@@ -1,14 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.homeService = void 0;
-const homeService = (req, res) => {
-    const DOMAIN = `/home/home`;
-    const app = req.app;
-    app.get("pools");
-    res.render(`${process.env.PWD}${process.env.ROUTER}${DOMAIN}`, {
-        title: "HOME TITLE",
-        date: new Date().toLocaleTimeString(),
-    });
-};
-exports.homeService = homeService;
+exports.HomeService = void 0;
+const Service_1 = require("../../lib/classes/Service");
+class HomeService extends Service_1.Service {
+    constructor({ DOMAIN }) {
+        super({ DOMAIN });
+        this.render = (req, res) => {
+            res.render(this.path, {
+                title: "Home TITLE",
+            });
+        };
+    }
+}
+exports.HomeService = HomeService;
 //# sourceMappingURL=home.service.js.map

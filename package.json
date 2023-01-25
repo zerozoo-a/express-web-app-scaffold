@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon --exec ts-node ./src/server/server.ts",
-    "build": "tsc && npm run copy-files",
-    "copy-files": "cp -r ./views/ dist/views/",
-    "start": "node ./dist/server/server.js"
+    "dev": "profile=dev concurrently \"nodemon --exec ts-node ./src/server/server.ts\" \"sass --watch src/scss:public/stylesheets\" ",
+    "build": "profile=prod tsc && npm run copy-files",
+    "copy-files": "cp -r ./views/ ./dist/views && cp -r ./public/ ./dist/public",
+    "start": "profile=prod node ./dist/server/server.js"
   },
   "dependencies": {
     "@types/bcrypt": "^5.0.0",
@@ -22,7 +22,6 @@
     "mysql2": "^2.3.3",
     "nunjucks": "^3.2.3",
     "reflect-metadata": "^0.1.13",
-    "sass": "^1.57.1",
     "swiper": "^8.4.6",
     "typeorm": "^0.3.11",
     "typescript": "^4.9.4"
@@ -34,6 +33,8 @@
     "@types/express-session": "^1.17.5",
     "@types/morgan": "^1.9.4",
     "@types/node": "^18.11.18",
-    "@types/nunjucks": "^3.2.1"
+    "@types/nunjucks": "^3.2.1",
+    "concurrently": "^7.6.0",
+    "sass": "^1.57.1"
   }
 }

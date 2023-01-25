@@ -13,12 +13,18 @@ exports.routeLoader = void 0;
 const home_controller_1 = require("../home/home.controller");
 const about_controller_1 = require("../about/about.controller");
 const board_controller_1 = require("../board/board.controller");
+const profile_controller_1 = require("../profile/profile.controller");
+const user_controller_1 = require("../user/user.controller");
+const signup_controller_1 = require("../signup/signup.controller");
 function routeLoader({ app }) {
     return __awaiter(this, void 0, void 0, function* () {
         app.use("/", home_controller_1.homeController);
         app.use("/about", about_controller_1.aboutController);
         app.use("/board", board_controller_1.boardController);
+        app.use("/profile", profile_controller_1.profileController);
+        app.use("/user", user_controller_1.userController);
+        app.use("/signup", signup_controller_1.signupController);
     });
 }
 exports.routeLoader = routeLoader;
-//# sourceMappingURL=route.js.map
+//# sourceMappingURL=route.loader.js.map
