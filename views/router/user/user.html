@@ -28,8 +28,6 @@
           font-size: 18px;
           background: #fff;
           height: 50px;
-  
-          /* Center slide text vertically */
           display: -webkit-box;
           display: -ms-flexbox;
           display: -webkit-flex;
@@ -52,10 +50,14 @@
         }
       </style>
 
+<div id="root"></div>
+
 <div class="swiper">
     <div class="swiper-wrapper">
-      <!-- Slides -->
-      <div class="swiper-slide">Slide 1</div>
+      <div class="swiper-slide">
+        Slide 1
+        <button id="btn">button?</button>
+      </div>
       <div class="swiper-slide">Slide 2</div>
       <div class="swiper-slide">Slide 3</div>
     </div>
@@ -63,18 +65,21 @@
   </div> 
 
   <script type="module">
+    const saySomething = ()=>{
+      const a = 1
+      console.log("a?",a)
+    }
+
+    document.getElementById('btn').addEventListener('click',saySomething)
+  </script>
+
+  <script type="module">
         import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.browser.min.js'
         const swiper = new Swiper('.swiper', {
-            // Optional parameters
-            // direction: 'vertical',
             loop: true,
-          
-            // If we need pagination
             pagination: {
               el: '.swiper-pagination',
             },
-
-            // And if we need scrollbar
             scrollbar: {
               el: '.swiper-scrollbar',
             },

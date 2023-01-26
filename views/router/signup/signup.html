@@ -1,6 +1,6 @@
 {% extends '../../layout/layout.html' %}
     {% block content%}
-    <form class="" action="">
+    <form class="" action="/" method="POST">
         <div class="container">
           <p>Please fill in this form to create an account.</p>
           <hr>
@@ -13,10 +13,6 @@
           <label for="psw-repeat"><b>Repeat Password</b></label>
           <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
           
-          <label>
-            <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-          </label>
-    
           <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
     
           <div class="clearfix">
