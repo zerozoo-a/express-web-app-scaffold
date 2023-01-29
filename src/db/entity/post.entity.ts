@@ -1,14 +1,4 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-  Index,
-  BeforeInsert,
-  CreateDateColumn,
-  DeleteDateColumn,
-  UpdateDateColumn,
-} from "typeorm";
-import { IsEmail } from "class-validator";
+import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Post {

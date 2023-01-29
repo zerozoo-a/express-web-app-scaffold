@@ -50,7 +50,6 @@ export default async function expressLoader({
 
   app.set<DB>(`db`, db);
   app.set<DataSource>(`orm`, AppDataSource);
-  const m = app.get<DataSource>("orm");
 
   return app as App;
 }

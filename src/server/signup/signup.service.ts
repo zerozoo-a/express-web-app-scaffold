@@ -1,6 +1,4 @@
-import { Service } from "../../lib/classes/Service";
-
-import type { RequestHandler } from "express";
+import { Service, type RequestHandler } from "../../lib/classes/Service";
 
 export class SignupService extends Service {
   constructor({ DOMAIN }: { DOMAIN: string }) {
@@ -12,6 +10,7 @@ export class SignupService extends Service {
   };
 
   render: RequestHandler = (req, res) => {
+    console.log("this.path", this.path);
     res.render(this.path, {
       title: "SIGNUP TITLE",
     });

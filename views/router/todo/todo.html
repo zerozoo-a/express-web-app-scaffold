@@ -1,0 +1,17 @@
+{% extends layout %}
+
+{% block content %}
+<ul>
+    {% for el in data.list %}
+    <li>{{ el }}</li>
+    {% endfor %}
+</ul>
+
+<form method="POST" action="/todo">
+    <label for="todo"> Add todo list </label>
+    <input type="text" id="todo" name="todo" required
+        minlength="1" maxlength="120">
+    <button type="submit">Confirm</button>
+</form>
+
+{% endblock %}
