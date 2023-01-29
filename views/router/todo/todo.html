@@ -1,11 +1,22 @@
 {% extends layout %}
 
 {% block content %}
-<ul>
+<ol>
+  <caption>TODO LIST</caption>
     {% for el in data.list %}
-    <li>{{ el }}</li>
+        <li>
+            <ul>
+                <table>
+                    <tbody>
+                        <td>
+                            {{ el.content }}
+                        </td>
+                    </tbody>
+                </table>
+            </ul>
+        </li>
     {% endfor %}
-</ul>
+</ol>
 
 <form method="POST" action="/todo">
     <label for="todo"> Add todo list </label>
@@ -15,3 +26,4 @@
 </form>
 
 {% endblock %}
+
