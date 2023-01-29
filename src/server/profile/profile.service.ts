@@ -7,10 +7,6 @@ export class ProfileService extends Service {
     super({ DOMAIN });
   }
 
-  getOne: RequestHandler = async (req, res) => {
-    const orm = this.app.get<typeof this.DataSource>("orm");
-  };
-
   render: RequestHandler = async (req, res) => {
     const con1 = this.app.get<typeof this.DB>("db").conns[0];
     this.app.get("db");
