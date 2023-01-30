@@ -34,10 +34,12 @@ export class Service implements Methods {
   protected readonly layout = (key: keyof Theme): ValueOf<Theme> => {
     return this.theme[key];
   };
+  protected readonly PWD: string = process.env.PWD ?? "";
 
   constructor({ DOMAIN }: { DOMAIN: string }) {
     this.DOMAIN = DOMAIN;
     this.path = `${process.env.PWD}${process.env.ROUTER}${this.DOMAIN}`;
     this.app = app;
+    if (this.PWD === "") throw new Error("PWD");
   }
 }

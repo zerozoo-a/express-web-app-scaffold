@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "profile=dev concurrently \"nodemon --exec ts-node ./src/server/server.ts\" \"sass --watch src/scss:public/stylesheets\" ",
+    "dev": "profile=dev nodemon --exec ts-node ./src/server/server.ts",
     "build": "profile=prod tsc && npm run copy-files",
     "copy-files": "cp -r ./views/ ./dist/views && cp -r ./public/ ./dist/public",
     "start": "profile=prod node ./dist/server/server.js"
@@ -35,6 +35,7 @@
     "@types/node": "^18.11.18",
     "@types/nunjucks": "^3.2.1",
     "concurrently": "^7.6.0",
-    "sass": "^1.57.1"
+    "sass": "^1.57.1",
+    "ts-node": "^10.9.1"
   }
 }

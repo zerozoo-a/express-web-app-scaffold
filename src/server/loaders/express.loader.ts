@@ -29,7 +29,8 @@ export default async function expressLoader({
     next();
   });
   app.use(cors());
-  app.use(express.static(path.join(__dirname, `public`)));
+  // app.use(express.static(path.join(__dirname, `public`)));
+  app.use(express.static(process.env.PWD + "/app/dist"));
   app.use(morgan("dev"));
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));

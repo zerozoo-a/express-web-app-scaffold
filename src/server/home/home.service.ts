@@ -1,4 +1,5 @@
 import { Service } from "../../lib/classes/Service";
+import path from "path";
 
 import type { RequestHandler } from "express";
 
@@ -8,8 +9,6 @@ export class HomeService extends Service {
   }
 
   render: RequestHandler = (req, res) => {
-    res.render(this.path, {
-      title: "Home TITLE",
-    });
+    res.sendFile(this.PWD + "/app/dist/index.html");
   };
 }
