@@ -3,7 +3,7 @@
 {% block content %}
 <ul>
     {% for el in data.list %}
-    <li>{{ el }}</li>
+    <li onclick=>{{ el }}</li>
     {% endfor %}
 </ul>
 
@@ -13,5 +13,9 @@
         minlength="1" maxlength="120">
     <button type="submit">Confirm</button>
 </form>
+
+<script>
+</script>
+
 
 {% endblock %}

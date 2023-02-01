@@ -12,14 +12,12 @@ interface Theme {
 }
 type ValueOf<T> = T[keyof T];
 
-type Render<T = {}> = (
-  req: Request,
-  res: Response,
-  props?: T,
-  next?: NextFunction
-) => void;
-
 interface Methods {}
+interface Props {
+  title: string;
+  layout: ValueOf<Theme>;
+  components?: unknown;
+}
 
 export class Service implements Methods {
   protected readonly DOMAIN: string;
@@ -34,10 +32,16 @@ export class Service implements Methods {
   protected readonly layout = (key: keyof Theme): ValueOf<Theme> => {
     return this.theme[key];
   };
+  protected props: Props;
 
   constructor({ DOMAIN }: { DOMAIN: string }) {
     this.DOMAIN = DOMAIN;
     this.path = `${process.env.PWD}${process.env.ROUTER}${this.DOMAIN}`;
     this.app = app;
+    this.props = {
+      title: this.constructor.name,
+      layout: this.layout("default"),
+      components: [],
+    };
   }
 }

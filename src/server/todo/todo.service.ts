@@ -7,24 +7,21 @@ import { Todo } from "../../db/entity/todo.entity";
 export class TodoService extends Service {
   constructor({ DOMAIN }: { DOMAIN: string }) {
     super({ DOMAIN });
+    this.props = {
+      title: "TODO TITLE",
+      layout: this.layout("default"),
+      components: [""],
+    };
   }
 
   render: RequestHandler = (req, res) => {
-    res.render(this.path, {
-      title: "TODO TITLE",
-      layout: this.layout("default"),
-      data: {
-        list: ["a", "b", "c"],
-      },
-    });
+    res.render(this.path, this.props);
   };
 
   addTodoPost: RequestHandler = (req, res) => {
     const newTodo = new Todo();
     newTodo.content = "hi";
     this.repo.getRepository(Todo).save(newTodo);
-
-    console.log("req", req.body);
 
     res.send({ hi: "hello" });
   };

@@ -1,4 +1,10 @@
-{% extends '../../layout/layout.html' %}
+{% extends layout %}
     {% block content%}
-    
+    <div>hello this is home!</div>
+
+    {% for component in components %}
+    load component {{component}}
+    <br>
+    {% endfor %}
+
     {% endblock%}
