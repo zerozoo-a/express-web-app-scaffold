@@ -8,7 +8,7 @@ import type { RequestHandler, Request, Response, NextFunction } from "express";
 export { RequestHandler };
 
 interface Theme {
-  default: "../../index.html";
+  default: string;
 }
 type ValueOf<T> = T[keyof T];
 
@@ -26,11 +26,14 @@ export class Service implements Methods {
   protected readonly repo: DataSource = AppDataSource;
   protected readonly DataSource: DataSource;
   protected readonly DB: DB;
-  protected readonly theme: Theme = {
-    default: "../../index.html",
+  protected readonly PATHS = {
+    public: `${process.env.PWD}/public`,
+  };
+  protected readonly THEME: Theme = {
+    default: `${process.env.PWD}/views/index.html`,
   };
   protected readonly layout = (key: keyof Theme): ValueOf<Theme> => {
-    return this.theme[key];
+    return this.THEME[key];
   };
   protected props: Props;
 

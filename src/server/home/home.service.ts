@@ -13,7 +13,7 @@ export class HomeService extends Service {
   }
 
   render: RequestHandler = (req, res) => {
-    console.log("hello");
+    console.log("public?", this.PATHS.public);
     res.render(this.path, this.props);
   };
 }
