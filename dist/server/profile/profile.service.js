@@ -14,9 +14,6 @@ const Service_1 = require("../../lib/classes/Service");
 class ProfileService extends Service_1.Service {
     constructor({ DOMAIN }) {
         super({ DOMAIN });
-        this.getOne = (req, res) => __awaiter(this, void 0, void 0, function* () {
-            const orm = this.app.get("orm");
-        });
         this.render = (req, res) => __awaiter(this, void 0, void 0, function* () {
             const con1 = this.app.get("db").conns[0];
             this.app.get("db");

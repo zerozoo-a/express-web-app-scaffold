@@ -1,0 +1,19 @@
+    <h1>
+    {{title}}
+    </h1>
+    <div id="timer">
+        date: <b id="time">{{date or 'loading...'}}</b>
+    </div>
+    <script>
+        const now = new Date()
+        const timer = setInterval(()=>{
+            const time = document.querySelector("#time");
+            time.innerHTML = now.toLocaleTimeString() 
+            now.setSeconds(now.getSeconds() + 1);
+        },1000)
+
+        // clear
+        window.onunload = () => {
+            clearInterval(timer)
+        }
+    </script>

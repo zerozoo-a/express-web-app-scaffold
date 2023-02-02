@@ -33,7 +33,7 @@ function expressLoader({ app, db, }) {
             next();
         });
         app.use((0, cors_1.default)());
-        app.use(express_1.default.static(path_1.default.join(__dirname, `plubic`)));
+        app.use(express_1.default.static(path_1.default.join(__dirname, `public`)));
         app.use((0, morgan_1.default)("dev"));
         app.use(express_1.default.json());
         app.use(express_1.default.urlencoded({ extended: false }));
@@ -45,12 +45,11 @@ function expressLoader({ app, db, }) {
             cookie: { httpOnly: true, secure: false },
             name: "session-cookie",
         }));
-        app.use("/assets", express_1.default.static(path_1.default.join(__dirname, "../public")));
+        app.use(express_1.default.static(path_1.default.join(__dirname, "../../../public")));
         app.set("view engine", "html");
         nunjucks_1.default.configure("views", { express: app, watch: true, autoescape: true });
         app.set(`db`, db);
         app.set(`orm`, data_source_1.AppDataSource);
-        const m = app.get("orm");
         return app;
     });
 }

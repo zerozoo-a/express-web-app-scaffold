@@ -1,4 +1,14 @@
-{% extends '../../layout/layout.html' %}
+{% extends layout %}
     {% block content%}
-    
+    <div>hello this is home!</div>
+
     {% endblock%}
+
+    {% block components%}
+        {% for component in components %}
+        <script src={{component}}></script>
+        {% endfor %}
+        <script src="/hello"></script>
+        
+
+    {% endblock %}

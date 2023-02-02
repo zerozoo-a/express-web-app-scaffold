@@ -2,10 +2,17 @@
     {% block content%}
     <div>hello this is home!</div>
 
-    {% for component in components %}
-    load component {{component}}
-    <br>
-    {% endfor %}
-    <script src="./js/components/hello"></script>
-
     {% endblock%}
+
+    {% block components%}
+        {% for component in components %}
+        <script src={{component}}></script>
+        {% endfor %}
+        <script type="module">
+            import hello from './js/components/hello.js'
+            hello()
+
+        </script>
+        
+
+    {% endblock %}

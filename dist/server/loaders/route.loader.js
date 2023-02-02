@@ -16,6 +16,7 @@ const board_controller_1 = require("../board/board.controller");
 const profile_controller_1 = require("../profile/profile.controller");
 const user_controller_1 = require("../user/user.controller");
 const signup_controller_1 = require("../signup/signup.controller");
+const todo_controller_1 = require("../todo/todo.controller");
 function routeLoader({ app }) {
     return __awaiter(this, void 0, void 0, function* () {
         app.use("/", home_controller_1.homeController);
@@ -24,6 +25,7 @@ function routeLoader({ app }) {
         app.use("/profile", profile_controller_1.profileController);
         app.use("/user", user_controller_1.userController);
         app.use("/signup", signup_controller_1.signupController);
+        app.use("/todo", todo_controller_1.todoController);
     });
 }
 exports.routeLoader = routeLoader;

@@ -1,1 +1,4 @@
-console.log("hola");
+function hello() {
+  console.log("hola");
+}
+export default hello;

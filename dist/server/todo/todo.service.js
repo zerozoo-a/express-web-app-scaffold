@@ -7,20 +7,18 @@ class TodoService extends Service_1.Service {
     constructor({ DOMAIN }) {
         super({ DOMAIN });
         this.render = (req, res) => {
-            res.render(this.path, {
-                title: "TODO TITLE",
-                layout: this.layout("default"),
-                data: {
-                    list: ["a", "b", "c"],
-                },
-            });
+            res.render(this.path, this.props);
         };
         this.addTodoPost = (req, res) => {
             const newTodo = new todo_entity_1.Todo();
             newTodo.content = "hi";
             this.repo.getRepository(todo_entity_1.Todo).save(newTodo);
-            console.log("req", req.body);
             res.send({ hi: "hello" });
+        };
+        this.props = {
+            title: "TODO TITLE",
+            layout: this.layout("default"),
+            components: [""],
         };
     }
 }

@@ -29,7 +29,6 @@ export default async function expressLoader({
     next();
   });
   app.use(cors());
-  app.use(express.static(path.join(__dirname, `public`)));
   app.use(morgan("dev"));
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
@@ -43,7 +42,7 @@ export default async function expressLoader({
       name: "session-cookie",
     })
   );
-  app.use(express.static(path.join(__dirname, "../../../public")));
+  app.use(express.static(`${process.env.PWD}/public`));
 
   app.set("view engine", "html");
   nunjucks.configure("views", { express: app, watch: true, autoescape: true });

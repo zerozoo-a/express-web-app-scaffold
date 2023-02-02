@@ -6,9 +6,13 @@ class HomeService extends Service_1.Service {
     constructor({ DOMAIN }) {
         super({ DOMAIN });
         this.render = (req, res) => {
-            res.render(this.path, {
-                title: "Home TITLE",
-            });
+            console.log("public?", this.PATHS.public);
+            res.render(this.path, this.props);
+        };
+        this.props = {
+            title: "HOME~~TITLE",
+            layout: this.layout("default"),
+            components: [`hello`, `world`, `greet`, `name`],
         };
     }
 }
